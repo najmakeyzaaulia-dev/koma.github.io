@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMA.com - Literasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Container utama menyerupai kertas di gambar */
+        .paper-container {
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border: 1px solid #ddd;
+            box-shadow: 10px 10px 0px #bebebe;
+            position: relative;
+        }
+
+        /* Header / Navigasi */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; }
+
+        /* Judul */
+        .trending { color: #555; font-size: 14px; margin-bottom: 5px; }
+        h1 { 
+            text-transform: uppercase; 
+            font-size: 22px; 
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        /* Area Gambar Utama */
+        .main-image {
+            width: 100%;
+            height: 200px;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fafafa;
+            margin-bottom: 20px;
+        }
+
+        /* Pertanyaan Tengah */
+        .question {
+            text-align: center;
+            font-style: italic;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        /* Grid untuk Kotak Interaktif */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            border: 2px solid #333;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            background-color: #f0f0f0;
+        }
+
+        .card-icon {
+            height: 60px;
+            border: 1px dashed #999;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Styling Modal/Deskripsi yang muncul */
+        #description-box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #333;
+            background-color: #fffde7;
+            display: none; /* Sembunyi di awal */
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="paper-container">
+    <header>
+        <div class="logo">KOMA.com</div>
+        <div class="icons">🔔 ☰ 🔍</div>
+    </header>
+
+    <div class="trending">TRENDING: Pentingnya Literasi</div>
+    <h1>PENTINGNYA LITERASI DI DUNIA PENDIDIKAN</h1>
+
+    <div class="main-image">
+        <p>[ Gambar Orang Membaca Buku ]</p>
+    </div>
+
+    <div class="question">
+        Mengapa Literasi adalah jantung pendidikan? . . .
+    </div>
+
+    <div class="grid-container">
+        <div class="card" onclick="showDesc('jenis')">
+            <div class="card-icon">Gambar Jenis Literasi</div>
+            <strong>Jenis Literasi</strong>
+        </div>
+
+        <div class="card" onclick="showDesc('strategi')">
+            <div class="card-icon">Gambar Strategi</div>
+            <strong>Strategi</strong>
+        </div>
+    </div>
+
+    <div id="description-box">
+        <h3 id="desc-title"></h3>
+        <p id="desc-content"></p>
+    </div>
+</div>
+
+<script>
+    function showDesc(type) {
+        const box = document.getElementById('description-box');
+        const title = document.getElementById('desc-title');
+        const content = document.getElementById('desc-content');
+
+        box.style.display = "block";
+
+        if (type === 'jenis') {
+            title.innerText = "Jenis-Jenis Literasi";
+            content.innerText = "Terdiri dari Literasi Baca Tulis, Literasi Numerasi, Literasi Sains, Literasi Digital, Literasi Finansial, serta Literasi Budaya dan Kewargaan.";
+        } else if (type === 'strategi') {
+            title.innerText = "Strategi Literasi";
+            content.innerText = "Menciptakan lingkungan kaya teks, mengalokasikan waktu membaca harian, dan mengintegrasikan literasi ke dalam setiap mata pelajaran.";
+        }
+        
+        // Scroll otomatis ke bawah agar deskripsi langsung terlihat
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
